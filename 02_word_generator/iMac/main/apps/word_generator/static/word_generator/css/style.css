@@ -1,0 +1,10 @@
+*{
+  text-align: center;
+}
+section{
+  width: 500px;
+  height: auto;
+  overflow: hidden;
+  margin: auto;
+  margin-top: 50px;
+}

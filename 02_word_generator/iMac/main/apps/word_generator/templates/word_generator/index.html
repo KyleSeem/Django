@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="UTF-8">
+       <title>Word Generator</title>
+       <meta name="description" content="">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+       <!-- Latest compiled and minified JavaScript -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+       {% load staticfiles %}
+       <link rel="stylesheet" href="{% static 'word_generator/css/style.css' %}" media="screen" title="no title" charset="utf-8">
+    </head>
+    <body>
+      <div class="container">
+        <section>
+          <h3>Random Word (attempt #{{ request.session.attempt }})</h3>
+          <div class="well">
+            <h1>{{ request.session.rand_word }}</h1>
+          </div>
+          <form action="/get_word" method="POST">
+            {% csrf_token %}
+            <input class="btn btn-primary" type="submit" value="Generate">
+        </section>
+      </div>
+    </body>
+</html>
