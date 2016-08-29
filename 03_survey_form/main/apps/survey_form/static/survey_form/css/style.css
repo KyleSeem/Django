@@ -1,0 +1,33 @@
+.container{
+  margin: auto;
+  width: 600px;
+  height: auto;
+  overflow: hidden;
+}
+  section{
+    border: 2px solid #dbdbdb;
+    margin: auto;
+    margin-top: 30px;
+    padding: 20px;
+  }
+    .ui{
+      width: 380px;
+      float: right;
+    }
+    .form-group{
+      margin-bottom: 30px;
+    }
+    textarea{
+      margin-top: 10px;
+    }
+    h3{
+      margin-top: 10px;
+      margin-bottom: 20px;
+      text-decoration: underline;
+    }
+    section.alert{
+      font-size: 1.25em;
+    }
+    table{
+      font-size: 1.25em;
+    }

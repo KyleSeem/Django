@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="UTF-8">
+       <title>Survey Form</title>
+       <meta name="description" content="Coding Dojo Survey Form Assignment - Python Course, Django Section">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+       <!-- Latest compiled and minified JavaScript -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+       {% load staticfiles %}
+       <link rel="stylesheet" href="{% static 'survey_form/css/style.css' %}" media="screen" title="no title" charset="utf-8">
+    </head>
+    <body>
+      <div class="container">
+        <section>
+<!-- begin form -->
+          <form action="/process" method="POST">
+            {% csrf_token %}
+      <!-- name -->
+            <div class="form-group">
+              <label>Your Name:</label>
+              <input class="form-control ui" type="text" name="name" value="{{ request.session.name }}">
+            </div>
+      <!-- dojo location -->
+            <div class="form-group">
+              <label>Dojo Location:</label>
+              <select class="form-control ui" name="location">
+                <option>{{ request.session.location }}</option>
+                <option>Mountain View</option>
+                <option>Seattle</option>
+                <option>Worldwide</option>
+              </select>
+            </div>
+      <!-- favorite language -->
+            <div class="form-group">
+              <label>Favorite Language:</label>
+              <select class="form-control ui" name="language">
+                <option>{{ request.session.language }}</option>
+                <option>JavaScript</option>
+                <option>Python</option>
+                <option>Ruby</option>
+              </select>
+            </div>
+      <!-- comments -->
+            <div class="form-group">
+              <label>Comments (optional):</label>
+              <textarea class="form-control" name="comments" rows="5">{{ request.session.comments }}</textarea>
+            </div>
+      <!-- submit -->
+            <input type="submit" class="btn btn-primary" value="Submit">
+      <!-- button clears session -->      
+            <a class="btn btn-info" href="/reset" style="float: right;">Clear Form</a>
+          </form>
+        </section>
+      </div>
+    </body>
+</html>

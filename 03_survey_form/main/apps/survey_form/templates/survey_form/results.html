@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="UTF-8">
+       <title>Survey Results</title>
+       <meta name="description" content="Results Page">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+       <!-- Latest compiled and minified JavaScript -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+       {% load staticfiles %}
+       <link rel="stylesheet" href="{% static 'survey_form/css/style.css' %}" media="screen" title="no title" charset="utf-8">
+    </head>
+    <body>
+      <div class="container">
+        <section class="alert alert-success" role="alert">
+          Thanks for your submission! You have submitted this form {{ request.session.submittal }} {{ request.session.times }}.
+        </section>
+
+        <section>
+          <h3>Submitted Information</h3>
+          <table class="table">
+            <tr>
+              <td>Name:</td>
+              <td>{{ request.session.name }}</td>
+            </tr>
+            <tr>
+              <td>Location:</td>
+              <td>{{ request.session.location }}</td>
+            </tr>
+            <tr>
+              <td>Favorite Language:</td>
+              <td>{{ request.session.language }}</td>
+            </tr>
+            <tr>
+              <td>Comments:</td>
+              <td>{{ request.session.comments }}</td>
+            </tr>
+          </table>
+      <!-- button does not clear session -->    
+          <a class="btn btn-primary" href="/">Go Back</a>
+        </section>
+      </div>
+    </body>
+</html>
