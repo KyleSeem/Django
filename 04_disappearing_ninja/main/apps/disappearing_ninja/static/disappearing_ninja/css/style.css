@@ -1,0 +1,30 @@
+.container{
+  margin: auto;
+  overflow: hidden;
+}
+header{
+  text-align: center;
+}
+section{
+  margin: auto;
+  margin-top: 50px;
+}
+img{
+  height: 250px;
+  margin: auto;
+  display: inherit;
+}
+article{
+  margin: auto;
+  display: inline-block;
+}
+footer{
+  margin-top: 30px;
+  text-align: center;
+}
+img#single{
+  height: 400px;
+}
+.btn-primary{
+  border-color: #dbdbdb;
+}

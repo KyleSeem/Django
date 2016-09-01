@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="UTF-8">
+       <title>{{ name }}</title>
+       <meta name="description" content="">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+       <!-- Latest compiled and minified JavaScript -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+       {% load staticfiles %}
+       <link rel="stylesheet" href="{% static 'disappearing_ninja/css/style.css' %}">
+    </head>
+    <body>
+      <div class="container" style="width: 600px;">
+        <header>
+          {% if name == 'Not a Ninja!' %}
+            <h1>Sorry, That's {{ name }}</h1>
+            <h3>So here's Megan Fox instead.</h3>
+          {% else %}
+            <h1 style="{{ txt_color }}">{{ name }}</h1>
+            <h3>(He's the <span style="{{ txt_color }}">{{ color }}</span> one!)</h3>
+          {% endif %}
+        </header>
+        <section>
+          <img id="single" src="{% static image_source %}" alt="{{ color }}">
+        </section>
+        <footer>
+          <a href="/ninjas" class="btn btn-primary" style="background-{{ txt_color }}">Back to All Ninjas</a>
+        </footer>
+      </div>
+    </body>
+</html>
