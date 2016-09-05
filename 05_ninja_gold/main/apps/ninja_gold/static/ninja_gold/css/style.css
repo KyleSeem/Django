@@ -1,0 +1,35 @@
+.container{
+  width: 900px;
+}
+  header{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  section{
+    vertical-align: top;
+    text-align: center;
+    margin: 5px;
+    height: 190px;
+    width: 200px;
+    display: inline-block;
+  }
+    .btn-primary{
+      margin-top: 20px;
+    }
+  article{
+    height: 300px;
+    width: 850px;
+    overflow: scroll;
+  }
+    .red{
+      color: red;
+    }
+    .green{
+      color: green;
+    }
+  #reset{
+    font-size: 1.25em;
+    float: right;
+    margin-right: 20px;
+  }
