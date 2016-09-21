@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Friendships Part 2</title>
+  </head>
+  <body>
+    <h1> Friendships Assignment Part 2</h1>
+
+    {% for user in users.distinct %}
+      <p>USER: {{ user.first_name }} {{ user.last_name }}</p>
+        {% for friendship in user.usersfriend.all %}
+          <ul>
+            <li>FRIEND: {{ friendship.friend.first_name }} {{ friendship.friend.last_name }}</li>
+          </ul>
+        {% endfor %}
+    {% endfor %}
+
+      <!-- {% for friendship in friendships %}
+        <p>
+          {{ friendship.user.first_name }} {{ friendship.user.last_name }} <strong> is friends with </strong> {{ friendship.friend.first_name }} {{ friendship.friend.last_name }}
+        </p>
+      {% endfor %} -->
+
+    <!-- <h3>Individuals</h3>
+    {% for friendship in friendships %}
+      <p>{{ friendship.friend.first_name }}</p>
+    {% endfor %} -->
+
+    <!-- {% for user in users %}
+      <p>USER: {{ user.first_name }} {{ user.last_name }}</p> -->
+      <!-- {% for friendship in user.usersfriend.all %}
+        {% if friendship.friend.id == 2 %}
+          <p>FRIENDSHIP: {{ friendship.friend.first_name }} {{ friendship.friend.last_name }}</p>
+        {% endif %}
+      {% endfor %} -->
+    <!-- {% endfor %} -->
+
+  </body>
+</html>

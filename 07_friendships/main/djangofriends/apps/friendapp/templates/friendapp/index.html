@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Friendships</title>
+  </head>
+  <body>
+    <h1> I've got some friends? </h1>
+    {% for user in users %}
+      <p>
+        {{ user.first_name }} {{ user.last_name }}
+      </p>
+    {% endfor %}
+
+
+    <h3>{{ qstn.first_name }} {{ qstn.last_name }}</h3>
+
+    <h1> Friendships </h1>
+    {% for friendship in friendships %}
+      <p>
+        {{ friendship.user.first_name }} {{ friendship.user.last_name }} <strong>AND</strong> {{ friendship.friend.first_name }} {{ friendship.friend.last_name }}
+      </p>
+    {% endfor %}
+
+  </body>
+</html>
