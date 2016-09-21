@@ -2,7 +2,7 @@ Assignment: Friendships - Welcome to the ORM
 
 PART 1
 Load up
-  (djangoenv)yourassignmentfolder> git clone https://github.com/MikeHannon/djangofriends.git
+  cloned repository from Mike Hannon
 
 Filter
   1. Using models.Users.objects.filter(model_key=something). Filter all of the users such that we only get back users with the last_name of Rodriguez.
@@ -40,5 +40,5 @@ PART 2
     users = models.Users.objects.filter(usersfriend__friend__id=2)
     print (users.query)
     #don't forget to pass users in to the context dictionary!
-7. Given this query, on your HTML page, try to print out the first and last name of Users with the id 2. 
+7. Given this query, on your HTML page, try to print out the first and last name of Users with the id 2.
 8. Now that we can use related names to filter, let’s go back and try to get #4 but start with the Users!
