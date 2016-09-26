@@ -23,7 +23,7 @@ def index(req):
     print('*'*80)
     context = {
         'users':users,
-        # 'users':rods,
+        # 'users':rods, 
         # 'users':notRods,
         # 'users':q3,
         # 'users':q4,
