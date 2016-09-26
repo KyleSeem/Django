@@ -1,0 +1,30 @@
+.container{
+  width: 1000px;
+  height: auto;
+  margin: auto;
+  overflow: hidden;
+}
+  header#index{
+    text-align: center;
+  }
+  h2{
+    margin-bottom: 30px;
+  }
+  th{
+    text-align: center;
+  }
+  table.table.table-bordered{
+    margin-bottom: 30px;
+  }
+  article{
+    width: 400px;
+    float: right;
+  }
+  section.posted{
+    width: 500px;
+    height: auto;
+    float: left;
+  }
+  section#courses{
+    margin-top: 80px;
+  }

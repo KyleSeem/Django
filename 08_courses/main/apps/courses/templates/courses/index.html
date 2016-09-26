@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="UTF-8">
+       <title>Courses</title>
+       <meta name="description" content="Coding Dojo Courses Assignment - Django Section Python Course">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+       <!-- Latest compiled and minified JavaScript -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+       {% load staticfiles %}
+       <link rel="stylesheet" href="{% static 'courses/css/style.css' %}" media="screen" title="no title">
+       <script src="{% static 'courses/js/script.js' %}" media="screen" title="no title"></script>
+    </head>
+    <body>
+      <div class="container">
+        <header id="index">
+          <h1>Courses Assignment</h1>
+        </header>
+
+        <main>
+          <section>
+            <h3>Add a new course</h3>
+            <form action="/addCourse" method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                <label>Name:</label>
+                <input class="form-control" type="text" name="name">
+              </div>
+              <div class="form-group">
+                <label>Description:</label>
+                <textarea class="form-control" rows="3" name="description"></textarea>
+              </div>
+              <input type="submit" class="btn btn-primary" value="Add Course" style="float: right;">
+            </form>
+          </section>
+
+          <section id="courses">
+            <h3>Available Courses</h3>
+            <p>Click the name of the course to view or add comments</p>
+            <table class="table table-bordered">
+              <thead>
+                <th class="col-md-2">Course Name</th>
+                <th>Description</th>
+                <th>Date Added</th>
+                <th>Actions</th>
+              </thead>
+
+              <tbody>
+                {% for course in courses %}
+                <tr>
+                  <td>
+                    <form action="/comment/{{ course.id }}" method="GET">
+                      <input class="btn btn-link" type="submit" data-toggle="tooltip" data-placement="right" title="view comments" value="{{ course.name }}">
+                    </form>
+                  </td>
+                  <td>{{ course.description.description }}</td>
+                  <td>{{ course.created_at }}</td>
+                  <td>
+                    <form action="/deleteCourse/{{ course.id }}" method="GET">
+                      <input class="btn btn-link" type="submit" value="remove">
+                    </form>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </section>
+        </main>
+      </div>
+    </body>
+</html>
