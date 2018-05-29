@@ -1,0 +1,24 @@
+.container{
+  margin: auto;
+  width: 700px;
+}
+  section{
+    padding-bottom: 15px;
+  }
+    .table-bordered>tbody>tr>td{
+      vertical-align: middle;
+    }
+    .btn.btn-primary{
+      float: right;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+    form{
+      width: 400px;
+    }
+    footer{
+      padding-top: 30px;
+    }
+      footer>a.btn.btn-link{
+        text-decoration: underline;
+      }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Delete: Semi-Restful Routes</title>
+    <meta name="description" content="Coding Dojo, Python II, Django II, Semi-Restful Routes Assignment">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'semi_restful_routes/css/style.css' %}" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <h2>Are you sure you want to delete the following product?</h2>
+
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><strong>Name:</strong></td>
+              <td>{{ product.name }}</td>
+            </tr>
+
+            <tr>
+              <td><strong>Description:</strong></td>
+              <td>{{ product.description.description }}</td>
+            </tr>
+
+            <tr>
+              <td><strong>Price:</strong></td>
+              <td>${{ product.price.price }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+          <form action="{% url 'products:destroy' product.id %}" method="POST">
+            {% csrf_token %}
+            <a class="btn btn-info" href="{% url 'products:index' %}" role="button">No</a>
+            <span style="color:#377ab7;">|</span>
+            <input class="btn btn-danger" type="submit" value="Yes! I want to delete this product!">
+          </form>
+      </section>
+
+  </body>
+</html>

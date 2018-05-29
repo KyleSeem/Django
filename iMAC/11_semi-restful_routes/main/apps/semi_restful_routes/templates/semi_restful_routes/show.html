@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Show: Semi-Restful Routes</title>
+    <meta name="description" content="Coding Dojo, Python II, Django II, Semi-Restful Routes Assignment">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'semi_restful_routes/css/style.css' %}" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <header class="page-header">
+        <h1>Show Product <small>(Django Semi-Restful Routes)</small></h1>
+      </header>
+
+      <section>
+        <h3>Product: {{ product.id }}</h3>
+      </section>
+
+      <section>
+        <table class="table show">
+          <tbody>
+            <tr>
+              <td class="col-md-1"><strong>Name:</strong></td>
+              <td>{{ product.name }}</td>
+            </tr>
+
+            <tr>
+              <td class="col-md-1"><strong>Description:</strong></td>
+              <td>{{ product.description.description }}</td>
+            </tr>
+
+            <tr>
+              <td class="col-md-1"><strong>Price:</strong></td>
+              <td>${{ product.price.price }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <footer>
+        <a class="btn btn-link" href="{% url 'products:edit' product.id %}" role="button">Edit</a>
+        <span style="color:#377ab7;">|</span>
+        <a class="btn btn-link" href="{% url 'products:index' %}" role="button">Back</a>
+      </footer>
+
+    </div>
+  </body>
+</html>

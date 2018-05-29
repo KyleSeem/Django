@@ -1,0 +1,30 @@
+.container{
+  margin: auto;
+  width: 1000px;
+}
+  nav>form{
+    float: right;
+  }
+  article{
+    display: inline-block;
+    width: 400px;
+    vertical-align: top;
+    margin: 35px;
+  }
+    form{
+      padding-top: 20px;
+      border-top: 1px solid #e3e3e3;
+      }
+      label{
+        display: inline-block;
+        width: 20%;
+        margin-right: 10px;
+      }
+      .form-control{
+        display: inline-block;
+        width: 75%;
+      }
+      .btn.btn-primary{
+        float: right;
+        margin: 10px;
+      }

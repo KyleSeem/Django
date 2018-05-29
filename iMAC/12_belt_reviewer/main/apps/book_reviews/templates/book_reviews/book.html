@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Book Reviews</title>
+    <meta name="description" content="Coding Dojo, Python II, Django II, Belt Reviewer Assignment">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'book_reviews/css/style.css' %}" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+          <a class="btn btn-link" href="{% url 'book_reviews:index' request.session.userID %}" role="button">Home</a>
+        </form>
+      </nav>
+      <header class="page-header">
+        <h1>{{ book.title }} <small>by {{ book.author }}</small></h1>
+      </header>
+
+      <section class="split">
+        <h3>Reviews:</h3>
+        {% for reviewer in reviewers %}
+          {% if reviewer.book.id == book.id %}
+            <article style="display:block;">
+              <p>Rating: {{ reviewer.review.rating }} <span class="glyphicon glyphicon-star" aria-hidden="true"></span>'s</p>
+              <p><a style="text-decoration:underline;" href="">{{ reviewer.user.first_name }}</a> says: {{ reviewer.review.review }}</p>
+              <p>
+                Posted on {{ reviewer.review.created_at }}
+                {% if reviewer.user.id == request.session.userID %}
+                  <a class="btn btn-link" href="{% url 'book_reviews:delete' reviewer.review.id %}" role="button">Delete this Review</a>
+                {% endif %}
+              </p>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </section>
+
+      <section class="split">
+        <h3>Add a review for this book</h3>
+        {% if messages %}
+          <div class="alert alert-danger">
+            {% for alert in messages %}
+              <p {% if messages.tags %} class="messages.tags" {% endif %}>{{ alert }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+        <form action="{% url 'book_reviews:addReview' book.id %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" value="{{ request.session.userID }}" name="userID">
+          <input type="hidden" value="{{ book.id }}" name="bookID">
+          <div class="form-group">
+            <textarea class="form-control" rows="3" name="review"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="inputRating">Rating:
+              <select class="form-control" name="rating">
+                <option value="blank"></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+               stars.
+             </label>
+          </div>
+
+          <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Submit Review">
+          </div>
+        </form>
+      </section>
+
+    </div>
+  </body>
+</html>

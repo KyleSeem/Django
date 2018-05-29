@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Semi-Restful Routes</title>
+    <meta name="description" content="Coding Dojo, Python II, Django II, Semi-Restful Routes Assignment">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'semi_restful_routes/css/style.css' %}" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <header class="page-header">
+        <h1>Products <small>(Semi-Restful Routes with Django)</small></h1>
+      </header>
+
+      <section>
+        {% if messages %}
+          <div class="alert alert-success">
+            {% for message in messages %}
+              <p {% if messages.tags %} class="messages.tags" {% endif %}>{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </section>
+
+  <!-- section that holds all products table -->
+      <section>
+        <h3>Products</h3>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <th class="col-md-2">Name</th>
+            <th class="col-md-4">Description</th>
+            <th class="col-md-2">Price</th>
+            <th class="col-md-4">Actions</th>
+          </thead>
+
+          <tbody>
+            {% for product in products %}
+              <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description.description }}</td>
+                <td>{{ product.price.price }}</td>
+                <td>
+                  <a class="btn btn-link" href="{% url 'products:show' product.id %}" role="button">Show</a>
+                  <a class="btn btn-link" href="{% url 'products:edit' product.id %}" role="button">Edit</a>
+                  <a class="btn btn-info" href="{% url 'products:destroy' product.id %}" role="button">Remove</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+
+      <!-- {% for product in products %}
+        <p>{{ product.id }} | {{ product.name }}  {{ product.description.description }}  {{ product.price.price }}</p>
+      {% endfor %} -->
+
+      <footer>
+        <a class="btn btn-link" href="{% url 'products:new' %}" role="button">Add a new product</a>
+      </footer>
+    </div>
+  </body>
+</html>

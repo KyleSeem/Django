@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Book Reviews</title>
+    <meta name="description" content="Coding Dojo, Python II, Django II, Belt Reviewer Assignment">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'book_reviews/css/style.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <form action="{% url 'login_reg:delete' user.id %}" method="POST">
+          <a class="btn btn-link" href="{% url 'book_reviews:add' %}" role="button">Add Book and Review</a>
+          {% csrf_token %}
+          <input class="btn btn-link" type="submit" value="Delete Account">
+          <a class="btn btn-link" href="{% url 'login_reg:logout' %}" role="button">Logout</a>
+        </form>
+      </nav>
+      <header class="page-header">
+        <h1>Book Reviews <small>Home Page</small></h1>
+      </header>
+
+      <section>
+        {% if request.session.success %}
+          <h3>Welcome {{ request.session.success }}</h3>
+        {% endif %}
+      </section>
+
+      <section>
+        <h3>Recent Book Reviews:</h3>
+
+        {% for reviewer in reviewers %}
+          <article>
+            <h4><a href="{% url 'book_reviews:book' reviewer.book.id %}">{{ reviewer.book.title }}</a></h4>
+            <p>{{ reviewer.review.rating }}</p>
+            <p><a style="text-decoration:underline;" href="">{{ reviewer.user.first_name }}</a> says: {{ reviewer.review.review }}</p>
+            <p>Posted on {{ reviewer.review.created_at }}</p>
+          </article>
+        {% endfor %}
+      </section>
+    </div>
+  </body>
+</html>
