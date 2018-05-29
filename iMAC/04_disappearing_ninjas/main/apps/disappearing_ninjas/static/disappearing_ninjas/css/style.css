@@ -1,0 +1,19 @@
+.container{
+  margin: auto;
+  text-align: center;
+}
+  header{
+    margin-bottom: 40px;
+  }
+  img{
+    height: 600px;
+  }
+  article{
+    display: inline-flex;
+  }
+    article img{
+      height: 260px;
+    }
+  footer{
+    margin-top: 50px;
+  }

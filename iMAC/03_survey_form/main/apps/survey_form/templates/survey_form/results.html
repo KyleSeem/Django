@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Survey Form Results</title>
+    <meta name="description" content="Coding Dojo, Python II, Django I, Survey Form Assignment">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'survey_form/css/style.css' %}" media="screen">
+  </head>
+  <body>
+    <div class="container results">
+      <header>
+        <h1>Django Survey Form Results</h1>
+      </header>
+
+      <div class="alert alert-success">
+        <p>Thanks for submitting this form! You have submitted this form {{ request.session.submittal }} times now.</p>
+      </div>
+
+      <section>
+        <h3>Submitted Information</h3>
+
+        <div class="userData">
+          <label>Name:</label>
+          <p>{{ request.session.name }}</p>
+        </div>
+
+        <div class="userData">
+          <label>Location:</label>
+          <p>{{ request.session.location }}</p>
+        </div>
+
+        <div class="userData">
+          <label>Favorite Language:</label>
+          <p>{{ request.session.language }}</p>
+        </div>
+
+        <div class="userData">
+          <label>Comments:</label>
+          <p>{{ request.session.comments }}</p>
+        </div>
+      </section>
+        <a href="/" class="btn btn-primary" role="button">Go Back</a>
+    </div>
+  </body>
+</html>

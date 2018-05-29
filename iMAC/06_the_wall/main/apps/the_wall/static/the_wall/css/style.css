@@ -1,0 +1,39 @@
+.container{
+  margin: auto;
+}
+
+section{
+  width: 400px;
+  display: inline-block;
+  vertical-align: top;
+  margin: auto;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+  form{
+    padding-top: 20px;
+    border-top: 1px solid #c3c3c3;
+    margin: auto;
+  }
+  .form-horizontal .control-label{
+    text-align: left;
+  }
+  .form-horizontal .form-group{
+    margin: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 15px;
+  }
+    label.control-label{
+      width: 20%;
+      display: inline-block;
+      margin-right: 5px;
+    }
+    .form-control{
+      width: 75%;
+      display: inline-block;
+    }
+    .btn{
+      float: right;
+      margin-right: 10px;
+    }

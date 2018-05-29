@@ -1,0 +1,12 @@
+/*testmodels*/
+.container{
+  width: 600px;
+  margin: auto;
+}
+  section{
+    margin-top: 30px;
+  }
+    .panel.panel-info{
+      width: 500px;
+      margin: auto;
+    }

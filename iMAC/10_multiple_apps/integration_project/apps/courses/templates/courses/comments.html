@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+    <meta name="description" content="Coding Dojo, Python II, Django II, Courses Assignment">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'courses/css/style.css' %}" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <header class="page-header">
+        <h1>{{ course.name }} <small>Comments Page</small><a class="btn btn-link" href="{% url 'courses:index' %}">back to courses</a></h1>
+
+      </header>
+
+      <article>
+        <h4>Course Comments</h4>
+        {% for comment in course.comment_set.all %}
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <p>{{ comment.created_at }}</p>
+            </div>
+            <div class="panel-body">
+              <p>{{ comment.comment }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </article>
+
+      <article class="comments">
+        <h4>Add a new comment</h4>
+        <form action="{% url 'courses:comments' course.id %}" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <textarea class="form-control" rows="4" name="comment"></textarea>
+          </div>
+          <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Add Comment">
+          </div>
+        </form>
+      </article>
+
+    </div>
+  </body>
+</html>

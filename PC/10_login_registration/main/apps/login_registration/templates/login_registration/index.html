@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <meta charset="UTF-8">
+     <title>Login and Registration</title>
+     <meta name="description" content="Coding Dojo Assignment Python Course Django Section">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+     <!-- Latest compiled and minified JavaScript -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+     {% load staticfiles %}
+     <link rel="stylesheet" href="{% static 'login_registration/css/style.css' %}" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      {% for user in users %}
+        <p>{{ user.id }} {{ user.first_name }} {{ user.email }} {{ user.password }} {{ user.pw_hash }}</p>
+      {% endfor %}
+
+      <header>
+        <h1>Login &#38; Registration w/ Django</h1>
+      </header>
+
+<!-- applicable alerts from registration validation -->
+      {% if messages %}
+        <section>
+          <div class="alert alert-danger messages" role="alert">
+            {% for alert in messages %}
+              <p {% if messages.tags %} class="message.tags" {% endif %}> {{ alert }}</p>
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+
+<!-- registration section ad form -->
+      <section>
+        <h3>Registration</h3>
+
+        <form class="form-horizontal" action="/process/register" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="inputFirstName" class="control-label">First Name:</label>
+            <div class="userInput">
+              <input class="form-control" id="inputFirstName" type="text" name="first_name" value="{{ request.session.reg_first }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputLastName" class="control-label">Last Name:</label>
+            <div class="userInput">
+              <input class="form-control" id="inputLastName" type="text" name="last_name" value="{{ r   equest.session.reg_last }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputRegEmail" class="control-label">Email:</label>
+            <div class="userInput">
+              <input class="form-control" id="inputRegEmail" type="email" name="email" value="{{ request.session.reg_email }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputRegPassword" class="control-label">Password:</label>
+            <div class="userInput">
+              <input class="form-control" id="" type="text" name="password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputConfirmPw" class="control-label">Confirm Pw:</label>
+            <div class="userInput">
+              <input class="form-control" id="inputRegPassword" type="text" name="confirm_pw">
+            </div>
+          </div>
+          <div class="form-group">
+            <div>
+              <input class="btn btn-primary" type="submit" value="Register">
+            </div>
+          </div>
+        </form>
+      </section>
+
+<!-- login section and form -->
+      <section>
+        <h3>Login</h3>
+        <form class="form-horizontal" action="/process/login" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="inputLoginEmail" class="control-label">Email:</label>
+            <div class="userInput">
+              <input class="form-control" id="inputLoginEmail" type="email" name="email" value="{{ request.session.email }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputLoginPassword" class="control-label">Password</label>
+            <div class="userInput">
+              <input class="form-control" id="inputLoginPassword" type="text" name="password">
+            </div>
+          </div>
+          <div class="form-group">
+            <div>
+              <input class="btn btn-primary" type="submit" value="Login">
+            </div>
+          </div>
+        </form>
+      </section>
+
+    </div>
+  </body>
+</html>

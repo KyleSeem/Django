@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ninja Gold</title>
+    <meta name="description" content="Coding Dojo, Python II, Django I, Ninja Gold Assignment">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'ninja_gold/css/style.css' %}" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <a class="btn btn-link" style="float:right;" role="button" href="/">back to multi-apps</a>
+      </nav>
+
+      <header>
+        <h1>Ninja Gold with Django</h1>
+        <h3>Your Wallet: {{ request.session.wallet }}</h3>
+      </header>
+
+      <section>
+    <!-- farm form -->
+        <article>
+          <form action="/process/farm" method="POST">
+            {% csrf_token %}
+            <h4>Farm</h4>
+            <p>(earn 10-20 gold)</p>
+            <div class="form-group">
+              <input class="btn btn-warning" type="submit" value="Find Gold!">
+            </div>
+          </form>
+        </article>
+
+    <!-- cave form -->
+        <article>
+          <form action="/process/cave" method="POST">
+            {% csrf_token %}
+            <h4>Cave</h4>
+            <p>(earn 5-10 gold)</p>
+            <div class="form-group">
+              <input class="btn btn-warning" type="submit" value="Find Gold!">
+            </div>
+          </form>
+        </article>
+
+    <!-- house form -->
+        <article>
+          <form action="/process/house" method="POST">
+            {% csrf_token %}
+            <h4>House</h4>
+            <p>(earn 2-5 gold)</p>
+            <div class="form-group">
+              <input class="btn btn-warning" type="submit" value="Find Gold!">
+            </div>
+          </form>
+        </article>
+
+    <!-- casino form -->
+        <article>
+          <form action="/process/casino" method="POST">
+            {% csrf_token %}
+            <h4>Casino</h4>
+            <p>(earn/lose 0-50 gold)</p>
+            <div class="form-group">
+              <input class="btn btn-warning" type="submit" value="Find Gold!">
+            </div>
+          </form>
+        </article>
+      </section> <!-- closes form section -->
+
+      <section>
+        <h4> Activities:</h4>
+        <div id="log">
+          {% for message in request.session.messages %}
+            <p class="{{ message.1 }}">{{ message.0 }}</p>
+          {% endfor %}
+        </div>
+      </section>
+      <footer>
+        <a class="btn btn-info" href="/reset" role="button">Reset Session</a>
+      </footer>
+    </div>
+  </body>
+</html>

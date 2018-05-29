@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+    <meta name="description" content="Coding Dojo, Python II, Django II, Courses Assignment">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'courses/css/style.css' %}" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <h2>Are you sure you want to delete the following course?</h2>
+        <div class="delete">
+          <p>Name: {{ course.name }}</p>
+          <p>Description: {{ course_id.description.description }}</p>
+
+          <form action="/deleteCourse/{{ course.id }}" method="POST">
+            {% csrf_token %}
+            <a class="btn btn-info" href="/" role="button">No</a>
+            <input class="btn btn-danger" type="submit" value="Yes! I want to delete this course!">
+          </form>
+        </div>  
+      </section>
+
+    </div>
+  </body>
+</html>

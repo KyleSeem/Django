@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Disappearing Ninjas</title>
+    <meta name="description" content="Coding Dojo, Python II, Django I, Disappearing Ninjas Assignment">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'disappearing_ninjas/css/style.css' %}" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Teenage Mutant Ninja Turtles!</h1>
+        <h4>Click a turtle to visit his page!</h4>
+      </header>
+      <section>
+        <article>
+          <a href="/ninjas/blue"><img src="{% static 'disappearing_ninjas/img/leonardo.jpg' %}"></a>
+        </article>
+
+        <article>
+          <a href="/ninjas/orange"><img src="{% static 'disappearing_ninjas/img/michelangelo.jpg' %}"></a>
+        </article>
+
+        <article>
+          <a href="/ninjas/red"><img src="{% static 'disappearing_ninjas/img/raphael.jpg' %}"></a>
+        </article>
+
+        <article>
+          <a href="/ninjas/purple"><img src="{% static 'disappearing_ninjas/img/donatello.jpg' %}"></a>
+        </article>
+
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Multiple Apps/Courses</title>
+    <meta name="description" content="Coding Dojo, Python II, Django II, Multiple Apps Assignment">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'courses/css/style.css' %}">
+  </head>
+  <body>
+    <div class="container" style="width:900px;">
+      <nav>
+        <a class="btn btn-link" style="float:right;" role="button" href="{% url 'courses:index' %}">back to courses</a>
+      </nav>
+      <header class="page-header">
+        <h1>Course Manager <small>Multiple Apps</small></h1>
+      </header>
+
+      <section>
+        <h3>Register for Classes</h3>
+        <p>To register for a class select the student and course from the dropdowns and click "Register"</p>
+      </section>
+
+      <section>
+        {% if messages %}
+          <div class="alert alert-info">
+            {% for alert in messages %}
+              <p {% if messages.tags %} class="messages.tags" {% endif %}>{{ alert }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </section>
+
+      <section>
+        <form class="form-inline" action="{% url 'courses:register' %}" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <select class="form-control" name="user">
+              <option value="blank">Student Name</option>
+              {% for user in users %}
+              <option value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <select class="form-control" name="course">
+              <option value="blank">Course Name</option>
+              {% for course in courses %}
+                <option value="{{ course.id }}">{{ course.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Register">
+          </div>
+        </form>
+      </section>
+
+      <section>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <th>Course</th>
+            <th>Description</th>
+            <th>Students</th>
+          </thead>
+
+          <tbody>
+            {% for course in courses %}
+              <tr>
+                <td>{{ course.name }}</td>
+                <td>{{ course.description.description }}</td>
+                <td style="text-align:center;">
+                {% for user in count %}
+                  {% if user.course == course.id %}
+                    {{ user.num_students }}
+                  {% endif %}
+                {% endfor %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+
+      <!-- {% for student in students %}
+        <p>{{ student.user.first_name }} {{ student.user.last_name }} {{ student.course.name }}</p>
+      {% endfor %}
+ -->
+    </div>
+  </body>
+</html>

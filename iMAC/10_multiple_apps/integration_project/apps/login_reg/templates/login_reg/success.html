@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Login and Registration</title>
+    <meta name="description" content="Coding Dojo, Python II, Django II, Login and Registration Assignment">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'login_reg/css/style.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <form action="{% url 'login_reg:delete' user.id %}" method="POST">
+          {% csrf_token %}
+          <input class="btn btn-link" type="submit" value="delete account">
+          <a class="btn btn-link" href="{% url 'login_reg:logout' %}" role="button">logout</a>
+        </form>
+      </nav>
+      <header class="page-header">
+        <h1>Login and Registration <small>Success Page</small></h1>
+      </header>
+
+      <section>
+        {% if request.session.success %}
+          <h3>Welcome {{ request.session.success }}</h3>
+        {% endif %}
+
+        <!-- {{ user.id }} {{ user.first_name }} -->
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+.container{
+  width: 1000px;
+  margin: auto;
+}
+  header a{
+    float: right;
+  }
+  section{
+    display: block;
+    margin-bottom: 40px;
+  }
+  h3{
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+  aside{
+    width: 500px;
+    margin: auto;
+    /*float: left;*/
+    display: inline-block;
+  }
+    form.form-horizontal{
+      width: 500px;
+      padding-top: 20px;
+      border-top: 1px solid #e3e3e3;
+
+    }
+      label.control-label{
+        width: 20%;
+        display: inline-block;
+        vertical-align: top;
+        padding-right: 5px;
+      }
+      .form-control{
+        width: 75%;
+        display: inline-block;
+      }
+      .btn.btn-success{
+        float: right;
+        margin-right: 25px;
+      }
+  article{
+    width: 430px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  article.comments{
+    margin-left: 50px;
+  }
+    .comments textarea{
+      width: 95%;
+    }
+    .btn.btn-primary{
+      float: right;
+      margin-right: 25px;
+    }
+  div.delete{
+    width: 800px;
+    margin: auto;
+    margin-top: 30px;
+    font-size: 1.4em;
+  }
+    div.delete form{
+      margin-top: 25px;
+      text-align: center;
+    }
+  .table>tbody>tr>td.data{
+    vertical-align: middle;
+  }
+  aside.well{
+    width: 350px;
+    float: right;
+    margin-top: 40px;
+    text-align: center;
+  }
+    aside.well p{
+      font-size: 1.15em;
+      margin-bottom: 20px;
+    }

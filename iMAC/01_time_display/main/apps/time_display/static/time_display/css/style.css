@@ -1,0 +1,10 @@
+.container{
+  margin: auto;
+}
+.jumbotron{
+  width: 600px;
+  height: auto;
+  text-align: center;
+  margin: auto;
+  margin-top: 50px;
+}

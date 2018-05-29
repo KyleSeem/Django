@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Survey Form</title>
+    <meta name="description" content="Coding Dojo, Python II, Django I, Survey Form Assignment">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'survey_form/css/style.css' %}" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Django Survey Form</h1>
+      </header>
+
+      <section>
+        <form class="form-horizontal" action="/process" method="POST">
+          {% csrf_token %}
+          <div class="notComments">
+      <!-- name input -->
+            <div class="form-group">
+              <label for="inputName" class="control-label">Name:</label>
+              <input class="form-control" type="text" name="name">
+            </div>
+
+      <!-- location input -->
+            <div class="form-group">
+              <label for="selectLocation" class="control-label">Location:</label>
+              <select class="form-control" name="location">
+                <option value=""></option>
+                <option value="Mountain View">Mountain View</option>
+                <option value="Seattle">Seattle</option>
+                <option value="Online">Online</option>
+              </select>
+            </div>
+
+      <!-- language input -->
+            <div class="form-group">
+              <label for="selectLanguage" class="control-label">Favorite Language:</label>
+              <select class="form-control" name="language">
+                <option value=""></option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Python">Python</option>
+                <option value="Ruby">Ruby</option>
+              </select>
+            </div>
+          </div>
+    <!-- comments input -->
+          <div class="form-group">
+            <label for="inputComments" class="control-label">Comments (optional):</label>
+            <textarea class="form-control"  name="comments" rows="4"></textarea>
+          </div>
+    <!-- submit button -->
+          <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Submit">
+          </div>
+        </form>
+      </section>
+      
+    </div>
+  </body>
+</html>

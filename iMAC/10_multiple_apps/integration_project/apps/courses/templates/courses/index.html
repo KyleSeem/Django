@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+    <meta name="description" content="Coding Dojo, Python II, Django II, Courses Assignment">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'courses/css/style.css' %}" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <a class="btn btn-link" style="float:right;" role="button" href="/">back to multi-apps</a>
+      </nav>
+
+      <header class="page-header">
+        <h1>Courses <small>(with Django)</small></h1>
+      </header>
+      
+      <section>
+        <aside class="well">
+          <h3>Course Manager</h3>
+          <p>Click the button below to access the Multiple Apps Course Manager page.</p>
+          <a class="btn btn-info" href="{% url 'courses:manager' %}" role="button">Go!</a>
+        </aside>
+
+    <!-- add new course form -->
+        <aside>
+          <h3>Add a new course</h3>
+          <form class="form-horizontal" action="{% url 'courses:add' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              <label class="control-label">Name:</label>
+              <input class="form-control" type="text" name="name">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Description:</label>
+              <textarea class="form-control" rows="3" name="description"></textarea>
+            </div>
+            <div class="form-group">
+              <input class="btn btn-success" type="submit" value="Add Course">
+            </div>
+          </form>
+        </aside>
+      </section>
+
+  <!-- courses table section -->
+      <section>
+        <h3>Courses</h3>
+        <table class="table table-bordered">
+          <thead>
+            <th>Course Name</th>
+            <th class="col-md-4">Description</th>
+            <th>Date Added</th>
+            <th>Actions</th>
+          </thead>
+          <tbody>
+            {% for course in courses %}
+              <tr>
+                <td class="data">{{ course.name }}</td>
+                <td class="data">{{ course.description.description }}</td>
+                <td class="data">{{ course.created_at }}</td>
+                <td>
+                  <a class="btn btn-link" href="{% url 'courses:comments' course.id %}">comments</a>
+                  <a class="btn btn-link" href="{% url 'courses:delete' course.id %}">remove</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </body>
+</html>

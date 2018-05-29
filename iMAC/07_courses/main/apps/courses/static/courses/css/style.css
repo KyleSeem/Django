@@ -1,0 +1,56 @@
+.container{
+  width: 1000px;
+  margin: auto;
+}
+  header a{
+    float: right;
+  }
+  section{
+    margin: auto;
+    margin-top: 50px;
+  }
+    form.form-horizontal{
+      width: 500px;
+      padding-top: 20px;
+      border-top: 1px solid #e3e3e3;
+
+    }
+      label.control-label{
+        width: 20%;
+        display: inline-block;
+        vertical-align: top;
+        padding-right: 5px;
+      }
+      .form-control{
+        width: 75%;
+        display: inline-block;
+      }
+      .btn.btn-success{
+        float: right;
+        margin-right: 25px;
+      }
+  article{
+    width: 430px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  article.comments{
+    margin-left: 50px;
+  }
+    .comments textarea{
+      width: 95%;
+    }
+    .btn.btn-primary{
+      float: right;
+      margin-right: 25px;
+    }
+  div.delete{
+    width: 800px;
+    margin: auto;
+    margin-top: 30px;
+    font-size: 1.4em;
+  }
+    div.delete form{
+      margin-top: 25px;
+      text-align: center;
+    }

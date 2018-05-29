@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Disappearing Ninjas</title>
+    <meta name="description" content="Coding Dojo, Python II, Django I, Disappearing Ninjas Assignment">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'disappearing_ninjas/css/style.css' %}" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Sorry! No ninjas here!</h1>
+      </header>
+      <section>
+        <h4> Click the button or use the address bar to visit the '/ninjas' route.</h4>
+        <a href="/ninjas" class="btn btn-primary">Ninjas!</a>
+      </section>
+    </div>
+  </body>
+</html>

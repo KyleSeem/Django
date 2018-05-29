@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My Page</title>
+    <meta name="description" content="Coding Dojo Assignment Python Course Django Section">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'login_registration/css/style.css' %}" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+  <!-- delete account form -->
+        <form action="/delete/{{ user.id }}" method="POST">
+          {% csrf_token %}
+          <input class="btn btn-link" type="submit" value="delete account">
+        </form>
+      </nav>
+
+      <div class="page-header">
+        <h2>Welcome {{ salutation }}, {{ user_name }}! <br>
+          <small>You're looking awesome today!</small></h2>
+      </div>
+
+<!-- messages section -->
+      <section id="greeting">
+        {% if messages %}
+          {% for alert in messages %}
+            <p {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ alert }}</p>
+          {% endfor %}
+        {% endif %}
+      </section>
+
+      <div class="jumbotron">
+        <h1>Standing Cats</h1>
+        <p>We can all agree they are adorable.</p>
+        <div class="row"> <!-- make this flex -->
+          <a class="thumbnail"><img src="{% static 'login_registration/img/cat1.jpg' %}" alt="cute cat 1"></a>
+          <a class="thumbnail"><img src="{% static 'login_registration/img/cat2.png' %}" alt="cute cat 2"></a>
+          <a class="thumbnail"><img src="{% static 'login_registration/img/cat3.jpg' %}" alt="cute cat 3"></a>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
